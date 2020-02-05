@@ -20,6 +20,7 @@ VALIDATORS -
 
 
 HOW TO RUN -
+Prerequisites:- Node.js and Angular CLI
 1) Open CMD.
 2) Run the command "npm install" to install all the dependencies.
 3) Now run the "ng serve" to start your server listening at localhost:4200.
