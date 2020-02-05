@@ -1,0 +1,12 @@
+.contact-table-container{
+    margin: 20px 15px;
+    width: 60%;
+}
+.no-contacts{
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+.deleteBtn{
+    padding: 5px 10px;
+}

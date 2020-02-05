@@ -1,0 +1,41 @@
+<form [formGroup]="form" class="contact-form-container" (ngSubmit)="addContact()">
+    <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input formControlName="firstname" id="firstname" type="text" class="form-control">
+        <div *ngIf="firstname.touched && firstname.invalid" class="alert alert-danger">First Name is required</div>
+    </div>
+    <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input formControlName="lastname" id="lastname" type="text" class="form-control">
+        <div *ngIf="lastname.touched && lastname.invalid" class="alert alert-danger">Last Name is required</div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input formControlName="email" id="email" type="email" class="form-control">
+        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">Email is not valid</div>
+            <div *ngIf="email.errors.emailExists">We already have an account with this email Id</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phoneno">Phone No</label>
+        <input formControlName="phoneno" id="phoneno" type="text" class="form-control" maxlength="10" placeholder="Please enter 10 digit phone number...">
+        <div *ngIf="phoneno.touched && phoneno.invalid" class="alert alert-danger">
+            <div *ngIf="phoneno.errors.required" >Phone Number is required</div>
+            <div *ngIf="phoneno.errors.pattern">Phone Number is invalid</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="radioGroup">Status</label>
+    <div class="radio-group" id="radioGroup">
+        <div *ngFor="let state of contactStatus" class="radio" >
+        <label>
+        <input formControlName="status" name="status"  type="radio" [value]="state.value" >{{state.key}}
+       </label>
+    </div>
+   </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]='disableCheck' *ngIf="!updateMode" >Add Contact</button>
+    <button class="btn btn-primary" type="submit" [disabled]='disableCheck' *ngIf="updateMode">Update Contact</button>
+</form>

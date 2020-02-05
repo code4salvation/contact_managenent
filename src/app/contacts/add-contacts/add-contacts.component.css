@@ -1,0 +1,11 @@
+.contact-form-container{
+    padding: 20px 15px;
+}
+.radio{
+    display: inline-block;
+    margin-right: 25px;
+    font-size: 14px;
+}
+input[type="radio"]{
+    margin-right: 5px;
+}

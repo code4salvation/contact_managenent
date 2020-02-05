@@ -1,0 +1,27 @@
+<table class="table contact-table-container">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" *ngFor="let heading of contactHeaders">{{ heading }}</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template  *ngIf="contactsList.length > 0; then contactdata else nodatalist" ></ng-template>
+      <ng-template  #contactdata> 
+        <tr *ngFor="let list of contactsList">
+          <td >{{ list.firstname + " " + list.lastname }}</td>
+          <td >{{ list.email }}</td>
+          <td >{{ list.phoneno}}</td>
+          <td >{{ list.status == 1 ? 'Active' : 'Inactive' }}</td>
+          <td><a  [routerLink]="['../addcontact', list]" [queryParams]="{edit: true}" skipLocationChange>Edit</a></td>
+          <td class="deleteBtn"><button type="button" class="btn btn-danger" (click)="removeContact(list)">Delete</button></td>
+        </tr>
+       </ng-template>
+      <ng-template #nodatalist>
+        <tr >
+            <td colspan="4" class="no-contacts"> No contact have been added yet</td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
